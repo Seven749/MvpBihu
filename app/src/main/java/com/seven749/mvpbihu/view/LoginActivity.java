@@ -67,11 +67,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
                     String id = jsonObject.getJSONObject("data").getString("id");
                     String username = jsonObject.getJSONObject("data").getString("username");
                     final String token = jsonObject.getJSONObject("data").getString("token");
+                    MainActivity.token = token;
                     Toast.makeText(LoginActivity.this, "登录成功！",
                             Toast.LENGTH_SHORT).show();
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
+                setResult(1);
                 finish();
             } else {
                 Toast.makeText(LoginActivity.this, info + "，登录失败...",

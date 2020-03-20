@@ -25,7 +25,6 @@ public class LoginModel extends BaseModel {
                 message.obj = response;
                 sendMessage(message);
                 Log.d(TAG, "LoginSendMessage");
-
             }
 
             @Override
