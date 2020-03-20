@@ -1,0 +1,2 @@
+rootProject.name='MvpBihu'
+include ':app'

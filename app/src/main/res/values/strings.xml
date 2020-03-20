@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">逼乎(MVP)</string>
+    <string name="welcome">Welcome to Bihu(MVP)</string>
+    <string name="login">Login Now</string>
+    <string name="home_title_text">我想知道...</string>
+    <string name="collection">收藏</string>
+    <string name="real_time_yq">实时疫情</string>
+    <string name="recommend">推荐</string>
+    <string name="day">day</string>
+    <string name="date">date</string>
+    <string name="home">首页</string>
+    <string name="add_question">提问</string>
+    <string name="mine">我的</string>
+</resources>
