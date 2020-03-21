@@ -5,7 +5,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 
-public abstract class BaseModel {
+public abstract class BaseModel implements IModel {
 
     private Handler mHandler; //获取P层中的Handler来通信
 
@@ -16,6 +16,7 @@ public abstract class BaseModel {
     /**
      * 用于解除持有
      */
+    @Override
     public void onDestroy(){
         mHandler = null;
     }

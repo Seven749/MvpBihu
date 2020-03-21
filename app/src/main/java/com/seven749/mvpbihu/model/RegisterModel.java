@@ -5,11 +5,12 @@ import android.os.Message;
 import android.util.Log;
 
 import com.seven749.mvpbihu.base.BaseModel;
+import com.seven749.mvpbihu.contract.RegisterContract;
 import com.seven749.mvpbihu.uitls.httphelper.CallBack;
 import com.seven749.mvpbihu.uitls.httphelper.NetUtil;
 import com.seven749.mvpbihu.uitls.httphelper.Request;
 
-public class RegisterModel extends BaseModel {
+public class RegisterModel extends BaseModel implements RegisterContract.Model {
 
     private static final String TAG = "RegisterModel";
 
@@ -17,6 +18,7 @@ public class RegisterModel extends BaseModel {
         super(handler);
     }
 
+    @Override
     public void register(Request request) {
         Log.d(TAG, "Register: start");
         NetUtil.getInstance().execute(request, new CallBack() {

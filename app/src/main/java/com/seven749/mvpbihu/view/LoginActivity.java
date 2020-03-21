@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.seven749.mvpbihu.R;
 import com.seven749.mvpbihu.base.BaseActivity;
+import com.seven749.mvpbihu.contract.LoginContract;
 import com.seven749.mvpbihu.presenter.LoginPresenter;
 import com.seven749.mvpbihu.uitls.DoubleClickExitHelper;
 import com.seven749.mvpbihu.uitls.httphelper.Request;
@@ -22,7 +23,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements View.OnClickListener{
+public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements View.OnClickListener, LoginContract.View {
     private static final String TAG = "LoginActivity";
     private Button buttonPostLogin;
     private TextView toRegister;
@@ -51,6 +52,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         editPassword = (EditText)findViewById(R.id.password_l);
     }
 
+    @Override
     public void loginResponse(Message message) {
         Log.d(TAG, "loginResponse: ");
         parseJSON(message.obj.toString());

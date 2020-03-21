@@ -5,11 +5,13 @@ import android.os.Message;
 import android.util.Log;
 
 import com.seven749.mvpbihu.base.BasePresenter;
+import com.seven749.mvpbihu.base.IModel;
+import com.seven749.mvpbihu.contract.MainContract;
 import com.seven749.mvpbihu.model.MainModel;
 import com.seven749.mvpbihu.uitls.httphelper.Request;
 import com.seven749.mvpbihu.view.MainActivity;
 
-public class MainPresenter extends BasePresenter<MainModel, MainActivity> {
+public class MainPresenter extends BasePresenter<MainContract.Model, MainContract.View> implements MainContract.Presenter {
 
     public MainPresenter(MainActivity view) {
         super(view);
@@ -30,6 +32,7 @@ public class MainPresenter extends BasePresenter<MainModel, MainActivity> {
         }
     }
 
+    @Override
     public void getQuestionList(Request request) {
         Log.d("MainPresenter", "getQuestionList: ");
         mModel.getQuestionList(request);

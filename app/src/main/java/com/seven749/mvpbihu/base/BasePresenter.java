@@ -5,11 +5,13 @@ import android.os.Handler;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import java.lang.ref.WeakReference;
 
-public abstract class BasePresenter<M extends BaseModel,V extends IView> implements IPresenter{
+public abstract class BasePresenter<M extends IModel,V extends IView> implements IPresenter{
     public V mView;
     public M mModel;
 
@@ -17,19 +19,6 @@ public abstract class BasePresenter<M extends BaseModel,V extends IView> impleme
     public BasePresenter(V view) {
         this.mView = view;
         this.mModel = initModel(getHandler());
-    }
-
-    /**
-     *我们通过实现IPresenter中的OnDestroy方法来解除持有
-     *
-     * @param owner 生命周期管理者
-     */
-    @Override
-    public void OnDestroy(@NonNull LifecycleOwner owner) {
-        //解绑V层 避免导致内存泄漏
-        mView = null;
-        mModel.onDestroy();
-        mModel = null;
     }
 
     public abstract M initModel(Handler handler);
@@ -65,4 +54,35 @@ public abstract class BasePresenter<M extends BaseModel,V extends IView> impleme
 
     //接收M层返回的消息
     public abstract void modelResponse(Message msg);
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    void OnCreate(@NonNull LifecycleOwner owner){}
+
+    /**
+     *我们通过实现IPresenter中的OnDestroy方法来解除持有
+     *
+     * @param owner 生命周期管理者
+     */
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    void OnDestroy(@NonNull LifecycleOwner owner){
+        //解绑V层 避免导致内存泄漏
+        mView = null;
+        mModel.onDestroy();
+        mModel = null;
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    void OnPause(@NonNull LifecycleOwner owner){}
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    void OnResume(@NonNull LifecycleOwner owner){}
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    void OnStart(@NonNull LifecycleOwner owner){}
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    void OnStop(@NonNull LifecycleOwner owner){}
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+    void OnLifeCycleChanged(@NonNull LifecycleOwner owner){}
 }

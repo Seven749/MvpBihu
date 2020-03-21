@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.seven749.mvpbihu.uitls.MyUtil;
 
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IView{
+public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IView{
 
     public P mPresenter;
 
@@ -69,23 +69,28 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         super.onPause();
     }
 
-    @Override
-    public void showMessage(String message) {
 
-    }
+    /**
+     * 展示提示信息
+     *
+     * @param message 要提示的信息
+     */
+    void showMessage(String message) {}
 
-    @Override
-    public void showProgress() {
+    /**
+     * 显示加载进度.
+     */
+    void showProgress(){}
 
-    }
+    /**
+     * 隐藏加载进度.
+     */
+    void dismissProgress(){}
 
-    @Override
-    public void dismissProgress() {
-
-    }
-
-    @Override
-    public boolean hasNetwork(Context context) {
-        return false;
-    }
+    /**
+     * 判断是否有网络
+     *
+     * @return 是否有网络
+     */
+    boolean hasNetwork(Context context){return false;}
 }

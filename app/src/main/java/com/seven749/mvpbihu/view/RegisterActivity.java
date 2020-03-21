@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.seven749.mvpbihu.R;
 import com.seven749.mvpbihu.base.BaseActivity;
+import com.seven749.mvpbihu.contract.RegisterContract;
 import com.seven749.mvpbihu.presenter.RegisterPresenter;
 import com.seven749.mvpbihu.uitls.httphelper.Request;
 
@@ -19,7 +20,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends BaseActivity<RegisterPresenter> {
+public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> implements RegisterContract.View{
 
     private Button buttonPostRegister;
     private EditText editUsername, editPassword, editPasswordAgain;
@@ -75,6 +76,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         });
     }
 
+    @Override
     public void registerResponse(Message message) {
         Log.d(TAG, "RegisterResponse: ");
         parseJSON(message.obj.toString());

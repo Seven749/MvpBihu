@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.seven749.mvpbihu.R;
 import com.seven749.mvpbihu.base.BaseActivity;
+import com.seven749.mvpbihu.contract.MainContract;
 import com.seven749.mvpbihu.model.Question;
 import com.seven749.mvpbihu.presenter.MainPresenter;
 import com.seven749.mvpbihu.uitls.httphelper.Request;
@@ -27,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends BaseActivity<MainPresenter> {
+public class MainActivity extends BaseActivity<MainContract.Presenter> implements MainContract.View{
 
     public static final String baseUrl = "http://bihu.jay86.com/";
     private static final String lastUrl = "getQuestionList.php";
@@ -87,6 +88,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         mPresenter.getQuestionList(request);
     }
 
+    @Override
     public void getListResponse(Message msg) {
         Log.d(TAG, "getListResponse: getQuestion");
         parseJSON(msg.obj.toString());

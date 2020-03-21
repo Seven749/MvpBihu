@@ -7,16 +7,16 @@ import com.seven749.mvpbihu.base.IPresenter;
 import com.seven749.mvpbihu.base.IView;
 import com.seven749.mvpbihu.uitls.httphelper.Request;
 
-public interface LoginContract {
+public interface RegisterContract {
     interface Model extends IModel{
-        void login(Request request);
+        void register(Request request);
     }
 
-    interface View extends IView {
-        void loginResponse(Message msg);
+    interface View extends IView{
+        void registerResponse(Message msg);
     }
 
-    interface Presenter extends IPresenter {
-        void login(Request request);
+    interface Presenter extends IPresenter{
+        void register(Request request);
     }
 }

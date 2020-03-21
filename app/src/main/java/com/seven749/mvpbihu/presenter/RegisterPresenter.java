@@ -4,11 +4,12 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.seven749.mvpbihu.base.BasePresenter;
+import com.seven749.mvpbihu.contract.RegisterContract;
 import com.seven749.mvpbihu.model.RegisterModel;
 import com.seven749.mvpbihu.uitls.httphelper.Request;
 import com.seven749.mvpbihu.view.RegisterActivity;
 
-public class RegisterPresenter extends BasePresenter<RegisterModel, RegisterActivity> {
+public class RegisterPresenter extends BasePresenter<RegisterContract.Model, RegisterContract.View> implements RegisterContract.Presenter {
 
     public RegisterPresenter(RegisterActivity view) {
         super(view);
@@ -27,7 +28,8 @@ public class RegisterPresenter extends BasePresenter<RegisterModel, RegisterActi
         }
     }
 
-    public void register(Request request){
+    @Override
+    public void register(Request request) {
         mModel.register(request);
     }
 }
