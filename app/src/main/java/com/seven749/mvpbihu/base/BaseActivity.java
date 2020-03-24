@@ -14,7 +14,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     public abstract P initPresenter();
 
-    public static final String TAG = "BaseActivity";
+    protected final String TAG = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

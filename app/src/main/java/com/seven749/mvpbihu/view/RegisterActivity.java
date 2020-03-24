@@ -26,7 +26,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     private EditText editUsername, editPassword, editPasswordAgain;
     private String username, password, passwordAgain;
     private final String lastUrl = "register.php";
-    private static final String TAG = "RegisterActivity";
     private Map<String, Object> data = new HashMap<String, Object>();
 
     @Override

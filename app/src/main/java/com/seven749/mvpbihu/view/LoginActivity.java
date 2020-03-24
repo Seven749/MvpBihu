@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements View.OnClickListener, LoginContract.View {
-    private static final String TAG = "LoginActivity";
     private Button buttonPostLogin;
     private TextView toRegister;
     private EditText editUsername, editPassword;
